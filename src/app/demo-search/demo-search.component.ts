@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-demo-search',
@@ -9,12 +9,11 @@ export class DemoSearchComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
   selected: string;
+
+  states: any[] = [];
   statesComplex: any[] = [
-    { id: 1, name: 'Alabama', region: 'South' },
+    { id: 1, name: 'Alabama', region: 'South'},
     { id: 2, name: 'Alaska', region: 'West' },
     { id: 3, name: 'Arizona', region: 'West' },
     { id: 4, name: 'Arkansas', region: 'South' },
@@ -65,5 +64,12 @@ export class DemoSearchComponent implements OnInit {
     { id: 50, name: 'Wisconsin', region: 'Midwest' },
     { id: 51, name: 'Wyoming', region: 'West' }
   ];
+
+  ngOnInit() {
+    for (const item of this.statesComplex) {
+      item.field = item.name + item.region;
+      this.states.push(item);
+   }
+  }
 
 }

@@ -35,8 +35,8 @@
 
     <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
     <input [(ngModel)]="selected"
-          [typeahead]="statesComplex"
-          typeaheadOptionField="name"
+          [typeahead]="states"
+          typeaheadOptionField="field"
           [typeaheadItemTemplate]="customItemTemplate"
           class="form-control">
 
