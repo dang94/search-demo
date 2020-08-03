@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 
 @Component({
   selector: 'app-demo-search',
@@ -10,6 +11,7 @@ export class DemoSearchComponent implements OnInit {
   constructor() { }
 
   selected: string;
+  selectedOption: any;
 
   states: any[] = [];
   statesComplex: any[] = [
@@ -67,9 +69,15 @@ export class DemoSearchComponent implements OnInit {
 
   ngOnInit() {
     for (const item of this.statesComplex) {
-      item.field = item.name + item.region;
-      this.states.push(item);
+      const newItem = {id: item.id, name: item.name, region: item.region, field: item.name + item.region}
+      this.states.push(newItem);
    }
+  }
+
+  onSelect(event: TypeaheadMatch): void {
+    console.log(event);
+    this.selectedOption = event.item;
+    this.selected = event.item.name;
   }
 
 }

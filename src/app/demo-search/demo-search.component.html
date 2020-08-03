@@ -26,8 +26,8 @@
         <tbody>
         <tr>
           <td>{{ index }}</td>
-          <td>{{ model.name}}</td>
-          <td>{{ model.region}}</td>
+          <td>{{ model.name }}</td>
+          <td>{{ model.region }}</td>
         </tr>
         </tbody>
       </table>
@@ -38,6 +38,7 @@
           [typeahead]="states"
           typeaheadOptionField="field"
           [typeaheadItemTemplate]="customItemTemplate"
+          (typeaheadOnSelect)="onSelect($event)"
           class="form-control">
 
   </div>
