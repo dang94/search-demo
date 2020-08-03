@@ -1,0 +1,45 @@
+<!-- <p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Country</th>
+    <th scope="col">Area</th>
+    <th scope="col">Population</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th></th>
+    <td>cvcxv</td>
+    <td>agasgas</td>
+    <td>svav</td>
+  </tr>
+  </tbody>
+</table> -->
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <ng-template #customItemTemplate let-model="item" let-index="index">
+      <table class="table table-striped">
+        <tbody>
+        <tr>
+          <td>{{ index }}</td>
+          <td>{{ model.name}}</td>
+          <td>{{ model.region}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+
+    <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
+    <input [(ngModel)]="selected"
+          [typeahead]="statesComplex"
+          typeaheadOptionField="name"
+          [typeaheadItemTemplate]="customItemTemplate"
+          class="form-control">
+
+  </div>
+  <div class="col-sm-3"></div>
+</div>
